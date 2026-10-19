@@ -1,0 +1,2255 @@
+/* ==========================================================================
+   TRUYỆN MỘC - STYLESHEET CHÍNH (PURE CSS3)
+   Dự án: Website đọc truyện trực tuyến TRUYỆN MỘC
+   Môn: Thiết kế Web - Vibe Coding
+   Quy định: 100% HTML5 & CSS3 thuần - Tuyệt đối không JavaScript
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. IMPORT FONTS GOOGLE (Hỗ trợ tiếng Việt đầy đủ)
+   - Merriweather: Tiêu đề trang nhã, đậm chất văn học, hoài niệm
+   - Plus Jakarta Sans: Giao diện hiện đại, sắc nét, dễ đọc trên màn hình số
+   - Literata: Font chuyên dụng cho đọc sách điện tử dài không mỏi mắt
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+/* --------------------------------------------------------------------------
+   2. CSS VARIABLES (:root) - TIÊU CHÍ KỸ THUẬT CSS (2.5 ĐIỂM)
+   Quản lý toàn bộ hệ thống màu sắc, font chữ, khoảng cách, bo góc và bóng đổ
+   -------------------------------------------------------------------------- */
+:root {
+  /* Bảng màu thương hiệu DARK MODE (Tối trầm - Ấm áp - Sang trọng) */
+  --primary-color: #F0E6DC;       /* Kem sáng thay nâu đậm — dùng cho tiêu đề trên nền tối */
+  --primary-light: #D4C4B5;       /* Kem trầm cho phần phụ */
+  --secondary-color: #A89484;     /* Nâu kem thứ cấp */
+  --accent-color: #E08A5E;        /* Cam đất sáng hơn cho nổi bật trên nền tối */
+  --accent-hover: #F0A070;        /* Cam sáng khi hover */
+  --accent-soft: rgba(224, 138, 94, 0.15); /* Cam đất mờ làm nền badge */
+
+  /* Màu nền & Bề mặt (Dark Mode — Đen nâu sâu & Gỗ tối) */
+  --background-color: #121010;    /* Nền đen nâu sâu thẳm */
+  --bg-card: #1E1A18;             /* Nền thẻ xám đen ấm */
+  --bg-warm: #262120;             /* Nền khối tối ấm */
+  --bg-soft: #1A1615;             /* Nền nhẹ xen kẽ */
+  --bg-dark: #0A0807;             /* Nền tối cực sâu cho BXH */
+  --bg-dark-card: #1A1514;        /* Nền thẻ trong khu vực tối nhất */
+
+  /* Màu văn bản & Đường viền */
+  --text-color: #E2DBD5;          /* Màu chữ chính kem sáng mềm */
+  --text-muted: #9F938B;          /* Màu chữ phụ, mô tả ngắn */
+  --text-light: #F0E6DC;          /* Màu chữ sáng */
+  --text-white: #FFFFFF;
+  --border-color: #2E2825;        /* Đường viền nâu tối tinh tế */
+  --border-focus: #E08A5E;        /* Viền cam khi focus */
+
+  /* Thẻ trạng thái & Điểm nhấn (Điều chỉnh cho nền tối) */
+  --badge-ongoing-bg: rgba(45, 122, 70, 0.2);   /* Xanh mờ trên nền tối */
+  --badge-ongoing-text: #6FCF8D;
+  --badge-completed-bg: rgba(224, 138, 94, 0.15); /* Cam mờ trên nền tối */
+  --badge-completed-text: #E8A47A;
+  --gold-color: #F4C542;          /* Vàng kim rực rỡ hơn trên nền tối */
+  --silver-color: #B0BEC5;        /* Bạc sáng hơn */
+  --bronze-color: #D4945A;        /* Đồng ấm hơn */
+
+  /* Hệ thống Font chữ */
+  --font-heading: 'Merriweather', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-reader: 'Literata', Georgia, serif;
+
+  /* Hệ thống Spacing nhất quán */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 1rem;     /* 16px */
+  --space-4: 1.5rem;   /* 24px */
+  --space-5: 2rem;     /* 32px */
+  --space-6: 3rem;     /* 48px */
+  --space-7: 4rem;     /* 64px */
+
+  /* Bo góc */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-card: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Đổ bóng (Shadows — mạnh hơn trên nền tối) */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 14px 36px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.50);
+
+  /* Hiệu ứng chuyển động mượt mà */
+  --transition-base: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: 0.15s ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   3. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Bù trừ cho sticky header */
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Texture ánh sáng ấm tinh tế trên nền tối bằng CSS gradient */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(224, 138, 94, 0.04) 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(244, 197, 66, 0.03) 0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(224, 138, 94, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Tiêu chuẩn Focus-visible cho Accessibility (Tiêu chí chấm điểm) */
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+/* Lớp container chung */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* --------------------------------------------------------------------------
+   4. TYPOGRAPHY CHUẨN MỰC
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--space-2);
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: var(--radius-full);
+}
+
+.section-desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: var(--space-5);
+  max-width: 600px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.view-all-link {
+  font-weight: 600;
+  color: var(--accent-color);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+}
+
+.view-all-link:hover {
+  color: var(--accent-hover);
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   5. NÚT BẤM (BUTTONS) - Flexbox & Hover Effects
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-base);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--text-white);
+  box-shadow: 0 4px 14px rgba(200, 121, 82, 0.35);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(200, 121, 82, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1.5px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  transform: translateY(-2px);
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: var(--text-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+}
+
+.btn-outline-white:hover {
+  background-color: var(--text-white);
+  color: var(--primary-color);
+}
+
+.btn-sm {
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. HEADER & THANH ĐIỀU HƯỚNG (<header>, <nav>) - Flexbox & CSS-only Menu
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(18, 16, 16, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.site-header:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  gap: var(--space-4);
+}
+
+/* Logo TRUYỆN MỘC */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  font-size: 1.25rem;
+  box-shadow: 0 4px 10px rgba(200, 121, 82, 0.3);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--primary-color);
+  line-height: 1.1;
+}
+
+.logo-tagline {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+/* Navigation Links */
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--primary-color);
+  position: relative;
+  padding: var(--space-2) 0;
+  transition: color var(--transition-fast);
+}
+
+/* Hover underline animation */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width var(--transition-base);
+  border-radius: var(--radius-full);
+}
+
+.nav-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--accent-color);
+}
+
+/* Header Action Buttons */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.header-login {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.header-login:hover {
+  background-color: var(--bg-warm);
+  color: var(--accent-color);
+}
+
+/* CSS-Only Mobile Menu Toggle (Checkbox Hack - KHÔNG DÙNG JS) */
+.nav-toggle-input {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-warm);
+}
+
+.hamburger-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--primary-color);
+  position: relative;
+  transition: background-color var(--transition-base);
+}
+
+.hamburger-line::before,
+.hamburger-line::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: transform var(--transition-base);
+}
+
+.hamburger-line::before {
+  top: -6px;
+}
+
+.hamburger-line::after {
+  bottom: -6px;
+}
+
+/* Khi checkbox được tick: biến thành dấu X */
+.nav-toggle-input:checked ~ .site-header .hamburger-line {
+  background-color: transparent;
+}
+
+.nav-toggle-input:checked ~ .site-header .hamburger-line::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle-input:checked ~ .site-header .hamburger-line::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO SECTION (<section class="hero-section">) - Flexbox & Animations
+   -------------------------------------------------------------------------- */
+.hero-section {
+  padding: var(--space-6) 0 var(--space-7);
+  background: radial-gradient(circle at 80% 20%, rgba(200, 121, 82, 0.12) 0%, transparent 50%),
+              radial-gradient(circle at 10% 80%, rgba(92, 71, 62, 0.08) 0%, transparent 40%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: var(--accent-soft);
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+  border: 1px solid rgba(200, 121, 82, 0.2);
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-color);
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.hero-title {
+  font-size: 3.25rem;
+  font-weight: 900;
+  line-height: 1.18;
+  margin-bottom: var(--space-4);
+  color: var(--primary-color);
+}
+
+.hero-title-highlight {
+  color: var(--accent-color);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-desc {
+  font-size: 1.12rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-5);
+  max-width: 540px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-color);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Hero Visual / Minh họa sách 3D */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-card-stack {
+  position: relative;
+  width: 320px;
+  height: 440px;
+  perspective: 1000px;
+}
+
+.hero-book-cover {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  transform: rotate(2deg);
+  transition: transform var(--transition-base);
+  position: relative;
+  background-color: var(--primary-color);
+}
+
+.hero-book-cover:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.hero-book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-book-overlay {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: var(--space-4);
+  background: linear-gradient(to top, rgba(36, 27, 23, 0.95) 0%, rgba(36, 27, 23, 0.6) 60%, transparent 100%);
+  color: var(--text-white);
+}
+
+.hero-floating-card {
+  position: absolute;
+  background-color: var(--bg-card);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border: 1px solid var(--border-color);
+  animation: floatCard 4s infinite ease-in-out;
+  z-index: 5;
+}
+
+.floating-card-top {
+  top: -20px;
+  left: -35px;
+}
+
+.floating-card-bottom {
+  bottom: 20px;
+  right: -30px;
+  animation-delay: -2s;
+}
+
+.floating-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent-soft);
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  font-size: 1.25rem;
+}
+
+.floating-text-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  line-height: 1.2;
+}
+
+.floating-text-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   8. THANH TÌM KIẾM GIAO DIỆN TĨNH (<form class="search-section">)
+   -------------------------------------------------------------------------- */
+.search-section {
+  margin-top: -30px;
+  margin-bottom: var(--space-6);
+  position: relative;
+  z-index: 10;
+}
+
+.search-box {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-card);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+}
+
+.search-form {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr auto;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.search-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-icon {
+  position: absolute;
+  left: var(--space-3);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.85rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--background-color);
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  border-color: var(--accent-color);
+  background-color: var(--bg-card);
+}
+
+.search-select {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--background-color);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.search-select:focus {
+  border-color: var(--accent-color);
+}
+
+.search-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   9. DANH MỤC THỂ LOẠI (CSS GRID)
+   -------------------------------------------------------------------------- */
+.categories-section {
+  padding: var(--space-6) 0;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-3);
+}
+
+.category-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: var(--space-4) var(--space-3);
+  text-align: center;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-color);
+}
+
+.category-card:hover::before {
+  transform: scaleX(1);
+}
+
+.category-icon {
+  width: 56px;
+  height: 56px;
+  background-color: var(--bg-warm);
+  color: var(--accent-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin-bottom: var(--space-3);
+  transition: all var(--transition-base);
+}
+
+.category-card:hover .category-icon {
+  background-color: var(--accent-color);
+  color: var(--text-white);
+  transform: rotate(6deg) scale(1.08);
+}
+
+.category-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--space-1);
+}
+
+.category-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: var(--space-2);
+}
+
+.category-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  background-color: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+/* --------------------------------------------------------------------------
+   10. TRUYỆN NỔI BẬT (<section id="truyen-noi-bat">) - 1 Big Feature + 3 Cards
+   -------------------------------------------------------------------------- */
+.featured-section {
+  padding: var(--space-6) 0;
+  background-color: var(--bg-warm);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.featured-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+/* Featured Hero (Truyện điểm nhấn lớn) */
+.featured-main {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.featured-main:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.featured-main-cover {
+  position: relative;
+  height: 100%;
+  min-height: 380px;
+}
+
+.featured-main-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-badge-highlight {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  background-color: var(--accent-color);
+  color: var(--text-white);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.featured-main-body {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.story-meta-tags {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
+}
+
+.tag-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.tag-genre {
+  background-color: var(--accent-soft);
+  color: var(--accent-color);
+}
+
+.tag-status-ongoing {
+  background-color: var(--badge-ongoing-bg);
+  color: var(--badge-ongoing-text);
+}
+
+.tag-status-completed {
+  background-color: var(--badge-completed-bg);
+  color: var(--badge-completed-text);
+}
+
+.tag-manhwa {
+  background-color: rgba(168, 85, 247, 0.2);
+  color: #D8B4FE;
+  border: 1px solid rgba(216, 180, 254, 0.35);
+}
+
+.tag-manga {
+  background-color: rgba(244, 63, 94, 0.2);
+  color: #FDA4AF;
+  border: 1px solid rgba(253, 164, 175, 0.35);
+}
+
+.tag-school {
+  background-color: rgba(14, 165, 233, 0.2);
+  color: #7DD3FC;
+  border: 1px solid rgba(125, 211, 252, 0.35);
+}
+
+.tag-hot {
+  background-color: rgba(249, 115, 22, 0.2);
+  color: #FDBA74;
+  border: 1px solid rgba(253, 186, 116, 0.35);
+}
+
+.tag-hunter {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #A5B4FC;
+  border: 1px solid rgba(165, 180, 252, 0.35);
+}
+
+.story-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: var(--space-1);
+  line-height: 1.3;
+}
+
+.story-title a:hover {
+  color: var(--accent-color);
+}
+
+.story-author {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.story-author-name {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.story-excerpt {
+  color: var(--text-color);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin-bottom: var(--space-4);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.story-card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* 3 truyện phụ nổi bật xếp dọc */
+.featured-sub-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  justify-content: space-between;
+}
+
+.featured-sub-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: var(--space-3);
+  display: grid;
+  grid-template-columns: 85px 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+  transition: all var(--transition-base);
+}
+
+.featured-sub-card:hover {
+  transform: translateX(6px);
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-card);
+}
+
+.featured-sub-cover {
+  width: 85px;
+  height: 110px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.featured-sub-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-sub-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-sub-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 4px;
+}
+
+.featured-sub-title a:hover {
+  color: var(--accent-color);
+}
+
+.featured-sub-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   11. TRUYỆN MỚI CẬP NHẬT (<section id="truyen-moi">) - 8 Cards (CSS Grid)
+   -------------------------------------------------------------------------- */
+.latest-section {
+  padding: var(--space-6) 0;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.book-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-color);
+}
+
+.book-card-cover-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: var(--bg-warm);
+}
+
+.book-card-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.book-card:hover .book-card-cover {
+  transform: scale(1.06);
+}
+
+.book-card-badge {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.book-card-body {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.book-card-genre {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-color);
+  margin-bottom: 4px;
+}
+
+.book-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1.35;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.7em;
+}
+
+.book-card-title a:hover {
+  color: var(--accent-color);
+}
+
+.book-card-author {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.book-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-color);
+  font-size: 0.8rem;
+}
+
+.book-card-chapter {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.book-card-time {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   12. BẢNG XẾP HẠNG (<section id="bang-xep-hang">) - Top 5 Độc Quyền
+   -------------------------------------------------------------------------- */
+.rankings-section {
+  padding: var(--space-6) 0;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.rankings-section .section-title {
+  color: var(--text-white);
+}
+
+.rankings-section .section-desc {
+  color: rgba(248, 245, 239, 0.7);
+}
+
+.rankings-section .section-title::after {
+  background-color: var(--gold-color);
+}
+
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.ranking-item {
+  background-color: var(--bg-dark-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-card);
+  padding: var(--space-3) var(--space-4);
+  display: grid;
+  grid-template-columns: 60px 80px 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+  transition: all var(--transition-base);
+}
+
+.ranking-item:hover {
+  transform: translateX(8px);
+  background-color: rgba(53, 42, 37, 0.9);
+  border-color: rgba(200, 121, 82, 0.4);
+}
+
+/* Thứ hạng 1 - Nổi bật đặc biệt */
+.ranking-item-top1 {
+  background: linear-gradient(135deg, rgba(60, 42, 33, 0.95), rgba(45, 33, 27, 0.95));
+  border: 2px solid var(--gold-color);
+  box-shadow: 0 8px 30px rgba(212, 163, 56, 0.2);
+}
+
+.ranking-number {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1;
+}
+
+.ranking-number-1 {
+  color: var(--gold-color);
+  text-shadow: 0 0 16px rgba(212, 163, 56, 0.5);
+}
+
+.ranking-number-2 {
+  color: var(--silver-color);
+}
+
+.ranking-number-3 {
+  color: var(--bronze-color);
+}
+
+.ranking-number-other {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 1.5rem;
+}
+
+.ranking-cover {
+  width: 70px;
+  height: 90px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.ranking-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ranking-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.ranking-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 4px;
+}
+
+.ranking-title a:hover {
+  color: var(--gold-color);
+}
+
+.ranking-meta {
+  font-size: 0.85rem;
+  color: rgba(248, 245, 239, 0.65);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ranking-reads {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.read-count-pill {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold-color);
+  background-color: rgba(212, 163, 56, 0.15);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+/* --------------------------------------------------------------------------
+   13. ĐÁNH GIÁ & CỘNG ĐỒNG (<section id="cong-dong">)
+   -------------------------------------------------------------------------- */
+.community-section {
+  padding: var(--space-6) 0;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.review-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-base);
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-color);
+}
+
+.review-stars {
+  color: #F5A623;
+  margin-bottom: var(--space-3);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-style: italic;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.review-author-name {
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 0.95rem;
+}
+
+.review-author-role {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Banner CTA Kêu gọi tham gia */
+.cta-banner {
+  background: linear-gradient(135deg, #2A1F1A, #1A1210);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(224, 138, 94, 0.25);
+}
+
+.cta-content {
+  max-width: 650px;
+}
+
+.cta-title {
+  color: var(--text-white);
+  font-size: 1.85rem;
+  margin-bottom: var(--space-2);
+}
+
+.cta-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   14. FOOTER (CHÂN TRANG <footer>) - Semantic & 4 Cột
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: #0A0807;
+  color: rgba(226, 219, 213, 0.8);
+  padding: var(--space-7) 0 var(--space-4);
+  border-top: 1px solid rgba(224, 138, 94, 0.15);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.footer-brand .logo-title {
+  color: var(--text-white);
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-4);
+  color: rgba(226, 219, 213, 0.7);
+}
+
+.footer-socials {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.social-btn:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.footer-column-title {
+  color: var(--text-white);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-4);
+  position: relative;
+  padding-bottom: var(--space-2);
+}
+
+.footer-column-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+.footer-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer-link {
+  font-size: 0.9rem;
+  color: rgba(226, 219, 213, 0.75);
+  transition: all var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--accent-color);
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: 0.85rem;
+}
+
+.footer-copyright {
+  color: rgba(226, 219, 213, 0.6);
+}
+
+/* ==========================================================================
+   15. STYLE CHO TRANG CHI TIẾT TRUYỆN (story.html)
+   ========================================================================== */
+.breadcrumb-nav {
+  padding: var(--space-4) 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item a:hover {
+  color: var(--accent-color);
+}
+
+.breadcrumb-separator {
+  color: var(--border-color);
+}
+
+.story-detail-hero {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.story-detail-cover {
+  width: 100%;
+  aspect-ratio: 3 / 4.2;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.story-detail-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-detail-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.story-detail-title {
+  font-size: 2.25rem;
+  color: var(--primary-color);
+  margin-bottom: var(--space-2);
+}
+
+.story-detail-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  background-color: var(--background-color);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin: var(--space-4) 0;
+  font-size: 0.9rem;
+}
+
+.meta-entry {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.meta-entry-label {
+  color: var(--text-muted);
+  min-width: 90px;
+}
+
+.meta-entry-value {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.story-synopsis-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.chapter-list-section {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.chapter-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.chapter-item:hover {
+  background-color: var(--bg-card);
+  border-color: var(--accent-color);
+  transform: translateX(4px);
+  color: var(--accent-color);
+}
+
+.chapter-time {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   16. STYLE CHO TRANG ĐỌC TRUYỆN MẪU (reader.html) - UI/UX ĐỈNH CAO
+   ========================================================================== */
+.reader-wrapper {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3) var(--space-7);
+  transition: all var(--transition-base);
+}
+
+/* Thanh công cụ đọc truyện (CSS-ONLY TÙY CHỈNH THEME & CỠ CHỮ) */
+.reader-toolbar {
+  position: sticky;
+  top: 76px;
+  z-index: 100;
+  background-color: rgba(18, 16, 16, 0.94);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.reader-control-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.reader-control-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* Radio buttons cho Theme CSS Pure */
+.theme-option-radio {
+  display: none;
+}
+
+.theme-pill-label {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.pill-sepia {
+  background-color: #F8F5EF;
+  color: #352A25;
+  border-color: #C87952;
+}
+
+.pill-night {
+  background-color: #241B17;
+  color: #F8F5EF;
+  border-color: #4A3B34;
+}
+
+.pill-green {
+  background-color: #EBF2E8;
+  color: #2D4A27;
+  border-color: #A3C99F;
+}
+
+/* Kỹ thuật CSS :has() chuyển đổi Theme không cần JS (Default đã là dark) */
+body:has(#theme-night:checked) {
+  --background-color: #0A0807;
+  --text-color: #D8D0C9;
+  --primary-color: #F0E6DC;
+  --bg-card: #151110;
+  --border-color: #252019;
+  --text-muted: #8A7E76;
+}
+
+body:has(#theme-night:checked) .site-header,
+body:has(#theme-night:checked) .reader-toolbar {
+  background-color: rgba(10, 8, 7, 0.95);
+}
+
+body:has(#theme-green:checked) {
+  --background-color: #0F1A0E;
+  --text-color: #C8DCC5;
+  --primary-color: #D0E8CD;
+  --bg-card: #162215;
+  --border-color: #253524;
+  --text-muted: #7A9A77;
+}
+
+body:has(#theme-green:checked) .site-header,
+body:has(#theme-green:checked) .reader-toolbar {
+  background-color: rgba(15, 26, 14, 0.95);
+}
+
+/* Đổi cỡ chữ CSS-Only bằng radio */
+.font-size-radio {
+  display: none;
+}
+
+.font-size-label {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: var(--bg-warm);
+}
+
+/* Đổi cỡ chữ vùng đọc bằng :has() */
+body:has(#font-sm:checked) .reader-content-body {
+  font-size: 1.05rem;
+}
+
+body:has(#font-md:checked) .reader-content-body {
+  font-size: 1.2rem;
+}
+
+body:has(#font-lg:checked) .reader-content-body {
+  font-size: 1.35rem;
+}
+
+/* Khu vực văn bản truyện mẫu */
+.reader-article {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+
+.reader-header {
+  text-align: center;
+  padding-bottom: var(--space-5);
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.reader-story-title {
+  font-size: 1.15rem;
+  color: var(--accent-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+
+.reader-chapter-title {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: var(--space-3);
+  font-family: var(--font-heading);
+}
+
+.reader-chapter-info {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.reader-content-body {
+  font-family: var(--font-reader);
+  font-size: 1.2rem;
+  line-height: 1.95;
+  color: var(--text-color);
+  text-align: justify;
+}
+
+.reader-content-body p {
+  margin-bottom: 1.6em;
+  text-indent: 1.5em;
+}
+
+/* Chữ cái đầu tiên phong cách văn học (Drop Cap) */
+.reader-content-body p.first-paragraph::first-letter {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  float: left;
+  line-height: 0.85;
+  padding-right: 12px;
+  padding-top: 4px;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.reader-quote {
+  border-left: 3px solid var(--accent-color);
+  padding: var(--space-3) var(--space-4);
+  margin: var(--space-5) 0;
+  font-style: italic;
+  background-color: var(--background-color);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.reader-divider {
+  text-align: center;
+  margin: var(--space-6) 0;
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  letter-spacing: 0.5em;
+}
+
+/* Điều hướng chương (Bottom Nav) */
+.reader-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border-color);
+  gap: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   17. KEYFRAME ANIMATIONS (CSS THUẦN - THAY THẾ AOS KHÔNG DÙNG JS)
+   -------------------------------------------------------------------------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   17B. KHU VỰC MANHWA & MANGA HỌC ĐƯỜNG ĐẶC BIỆT (DARK MODE VIBE)
+   -------------------------------------------------------------------------- */
+.section-banner-glow {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-5);
+  background: linear-gradient(135deg, #1C1528 0%, #120F1D 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 10px 30px rgba(147, 51, 234, 0.15);
+}
+
+.section-banner-manga {
+  background: linear-gradient(135deg, #24161C 0%, #170E14 100%);
+  border-color: rgba(244, 63, 94, 0.3);
+  box-shadow: 0 10px 30px rgba(244, 63, 94, 0.12);
+}
+
+.genre-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.genre-pill {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background-color: var(--bg-card);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.genre-pill:hover,
+.genre-pill.active {
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(224, 138, 94, 0.35);
+}
+
+.genre-pill-purple:hover,
+.genre-pill-purple.active {
+  background-color: #9333EA;
+  color: #FFFFFF;
+  border-color: #9333EA;
+  box-shadow: 0 4px 14px rgba(147, 51, 234, 0.4);
+}
+
+.genre-pill-red:hover,
+.genre-pill-red.active {
+  background-color: #E11D48;
+  color: #FFFFFF;
+  border-color: #E11D48;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.4);
+}
+
+/* Card truyện Manhwa Solo Leveling / Lookism Điểm Nhấn */
+.manhwa-hero-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-5);
+  background: linear-gradient(135deg, #181324 0%, #0F0C17 100%);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  padding: var(--space-4);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-base);
+}
+
+.manhwa-hero-card:hover {
+  border-color: #C084FC;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(168, 85, 247, 0.25);
+}
+
+.manhwa-hero-cover {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  position: relative;
+}
+
+.manhwa-hero-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.manhwa-hero-card:hover .manhwa-hero-cover img {
+  transform: scale(1.05);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.glow-orange {
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+}
+
+.glow-red {
+  box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   18. PREFERS-REDUCED-MOTION (HỖ TRỢ TRUY CẬP NGƯỜI DÙNG)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   19. RESPONSIVE MEDIA QUERIES (1024px, 768px, 480px)
+   -------------------------------------------------------------------------- */
+
+/* Tablet ngang & Màn hình vừa (1024px) */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    margin-top: var(--space-4);
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .featured-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .story-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+}
+
+/* Tablet dọc & Màn hình nhỏ (768px) */
+@media (max-width: 768px) {
+  .nav-toggle-label {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-card);
+    border-bottom: 2px solid var(--border-color);
+    padding: var(--space-4);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-150%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+    flex-direction: column;
+    z-index: 999;
+  }
+
+  .nav-toggle-input:checked ~ .site-header .main-nav {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-3);
+  }
+
+  .nav-link {
+    display: block;
+    padding: var(--space-2) 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .header-actions {
+    display: none;
+  }
+
+  .search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-main {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-main-cover {
+    min-height: 260px;
+  }
+
+  .story-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ranking-item {
+    grid-template-columns: 40px 65px 1fr;
+    gap: var(--space-3);
+  }
+
+  .ranking-reads {
+    grid-column: 1 / -1;
+    align-items: flex-start;
+    padding-top: var(--space-2);
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .story-detail-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .chapter-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Điện thoại di động (480px) */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .hero-card-stack {
+    width: 260px;
+    height: 360px;
+  }
+
+  .floating-card-top {
+    left: -10px;
+  }
+
+  .floating-card-bottom {
+    right: -10px;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reader-article {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .reader-chapter-title {
+    font-size: 1.65rem;
+  }
+
+  .reader-content-body {
+    font-size: 1.05rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}

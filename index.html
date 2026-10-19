@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRUYỆN MỘC | Vũ Trụ Manhwa, Manga Học Đường & Tiểu Thuyết Online (Dark Mode)</title>
+  
+  <!-- Meta SEO chuẩn quốc tế -->
+  <meta name="description" content="TRUYỆN MỘC - Không gian đọc truyện online phong cách Dark Mode hiện đại. Tổng hợp các siêu phẩm Manhwa Hàn Quốc (Solo Leveling, Lookism), Manga học đường Nhật Bản (Kaguya-sama, Spy x Family, Blue Box) và văn học chọn lọc. 100% HTML5 & CSS3 thuần.">
+  <meta name="keywords" content="đọc truyện online, truyện mộc, solo leveling, lookism, kaguya sama, manga hoc duong, manhwa han quoc, truyen tranh dark mode">
+  <meta name="author" content="TRUYỆN MỘC Team - Bài tập Thiết kế Web Vibe Coding">
+  
+  <!-- Thư viện CSS bên ngoài Animate.css (Hợp lệ quy định: chỉ dùng CDN CSS, KHÔNG dùng JavaScript) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  
+  <!-- File CSS chính thuần CSS3 -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E08A5E'><path d='M19 2H6c-1.2 0-2 .8-2 2v16c0 1.2.8 2 2 2h13c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1zm-1 18H6c-.6 0-1-.4-1-1V5c.3-.6.6-.8 1-.8h12v15.8z'/></svg>">
+</head>
+<body>
+
+  <!-- Checkbox ẩn điều khiển Mobile Menu (Kỹ thuật CSS-Only Hamburger, Tuyệt đối KHÔNG dùng JS) -->
+  <input type="checkbox" id="mobile-menu-toggle" class="nav-toggle-input" aria-label="Đóng mở menu di động">
+
+  <!-- ========================================================================
+       1. HEADER & THANH ĐIỀU HƯỚNG (<header> và <nav>)
+       ======================================================================== -->
+  <header class="site-header" id="top">
+    <div class="container header-container">
+      
+      <!-- Logo Thương hiệu TRUYỆN MỘC -->
+      <a href="index.html" class="logo" aria-label="Về trang chủ TRUYỆN MỘC">
+        <span class="logo-icon" aria-hidden="true">📖</span>
+        <div class="logo-text">
+          <span class="logo-title">TRUYỆN MỘC</span>
+          <span class="logo-tagline">Đọc Chậm • Cảm Sâu • Dark Edition</span>
+        </div>
+      </a>
+
+      <!-- Thanh điều hướng chính -->
+      <nav class="main-nav" aria-label="Điều hướng chính của trang web">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link active">Trang chủ</a></li>
+          <li><a href="#manhwa-section" class="nav-link">Manhwa Hot</a></li>
+          <li><a href="#manga-school" class="nav-link">Manga Học Đường</a></li>
+          <li><a href="#bang-xep-hang" class="nav-link">Bảng xếp hạng</a></li>
+          <li><a href="#the-loai" class="nav-link">Thể loại</a></li>
+          <li><a href="story.html" class="nav-link">Chi tiết Solo Leveling</a></li>
+          <li><a href="reader.html" class="nav-link">Đọc thử</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nhóm nút hành động người dùng -->
+      <div class="header-actions">
+        <a href="#auth-login" class="header-login">Đăng nhập</a>
+        <a href="#auth-register" class="btn btn-primary btn-sm">Tham gia ngay</a>
+      </div>
+
+      <!-- Nút Hamburger hiển thị trên Mobile (Kết nối với checkbox qua label for) -->
+      <label for="mobile-menu-toggle" class="mobile-hamburger-btn" aria-label="Mở thanh điều hướng">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </label>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       NỘI DUNG CHÍNH TRANG WEB (<main>)
+       ======================================================================== -->
+  <main id="main-content">
+
+    <!-- ======================================================================
+         2. HERO SECTION (<section class="hero-section">) - DARK MODE THEME
+         ====================================================================== -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="container hero-grid">
+        
+        <!-- Nội dung giới thiệu Hero -->
+        <div class="hero-content animate__animated animate__fadeInUp">
+          <div class="hero-badge">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            <span>Vũ trụ Manhwa & Manga Học Đường • Phiên Bản Đêm 2026</span>
+          </div>
+          
+          <h1 id="hero-heading" class="hero-title">
+            Đắm chìm thế giới,<br>
+            <span class="hero-title-highlight">vươn tầm bóng tối</span>
+          </h1>
+          
+          <p class="hero-desc">
+            Chào mừng bạn đến với <strong>TRUYỆN MỘC Dark Edition</strong> — không gian đọc trực tuyến được tối ưu giao diện nền tối bảo vệ mắt tuyệt đối. Khám phá những trận chiến mãn nhãn trong <em>Solo Leveling</em>, <em>Lookism</em>, hay những câu chuyện tình học đường ngọt ngào như <em>Kaguya-sama</em> và <em>Blue Box</em>.
+          </p>
+          
+          <div class="hero-actions">
+            <a href="#manhwa-section" class="btn btn-primary">
+              <span>Đọc Manhwa Siêu Phẩm</span>
+              <span aria-hidden="true">⚡</span>
+            </a>
+            <a href="#manga-school" class="btn btn-secondary">
+              <span>Manga Học Đường Nhật</span>
+            </a>
+          </div>
+
+          <!-- Thống kê minh họa nền tảng -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">5,800+</span>
+              <span class="stat-label">Chương truyện HD</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">350,000+</span>
+              <span class="stat-label">Độc giả theo dõi</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Không quảng cáo rác</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Minh họa sách 3D & Card trang trí (Solo Leveling Spotlight) -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-card-stack">
+            
+            <!-- Floating Badge trên -->
+            <div class="hero-floating-card floating-card-top glow-purple">
+              <div class="floating-icon">👑</div>
+              <div>
+                <p class="floating-text-title">Chúa Tể Bóng Tối</p>
+                <p class="floating-text-sub">Solo Leveling • Top 1 Thịnh Hành</p>
+              </div>
+            </div>
+
+            <!-- Khối Bìa sách 3D nổi bật: Solo Leveling -->
+            <div class="hero-book-cover" style="box-shadow: 0 20px 50px rgba(147, 51, 234, 0.35);">
+              <img src="images/solo_leveling.jpg" 
+                   alt="Bìa truyện Solo Leveling - Tôi Thăng Cấp Một Mình"
+                   width="320" height="440" loading="eager">
+              <div class="hero-book-overlay">
+                <span class="tag-badge tag-manhwa">Hàn Quốc • Siêu Cấp Hunter</span>
+                <h3 style="color:#FFF; font-size:1.25rem; margin-top:6px;">Solo Leveling (Tôi Thăng Cấp Một Mình)</h3>
+                <p style="font-size:0.8rem; color:#D8B4FE;">Tác giả: Chugong & DUBU • Hoàn thành</p>
+              </div>
+            </div>
+
+            <!-- Floating Badge dưới -->
+            <div class="hero-floating-card floating-card-bottom">
+              <div class="floating-icon">🌙</div>
+              <div>
+                <p class="floating-text-title">Chế độ đọc Dark Mode</p>
+                <p class="floating-text-sub">Êm dịu thị giác suốt đêm thâu</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. THANH TÌM KIẾM & BỘ LỌC THỂ LOẠI NHANH
+         ====================================================================== -->
+    <section class="search-section" aria-label="Tìm kiếm truyện tranh">
+      <div class="container">
+        <div class="search-box">
+          <form action="#tim-kiem" method="GET" class="search-form" role="search">
+            
+            <div class="search-input-group">
+              <span class="search-input-icon" aria-hidden="true">🔍</span>
+              <label for="search-input-field" class="visually-hidden" style="position:absolute; width:1px; height:1px; overflow:hidden;">Tìm kiếm</label>
+              <input type="search" 
+                     id="search-input-field" 
+                     name="q" 
+                     class="search-input" 
+                     placeholder="Tìm Solo Leveling, Lookism, Kaguya-sama, Spy x Family, Blue Box..." 
+                     required>
+            </div>
+
+            <div>
+              <label for="search-genre-field" class="visually-hidden" style="position:absolute; width:1px; height:1px; overflow:hidden;">Chọn thể loại</label>
+              <select id="search-genre-field" name="genre" class="search-select">
+                <option value="">Tất cả danh mục truyện</option>
+                <option value="manhwa">Manhwa Hàn Quốc (Action, Hunter)</option>
+                <option value="manga-school">Manga Học Đường Nhật Bản</option>
+                <option value="action">Hành Động - Băng Đảng Học Đường</option>
+                <option value="romcom">Rom-Com - Tình Cảm Tuổi Trẻ</option>
+                <option value="sports">Thể Thao Học Sinh (Cầu Lông, Bóng Rổ)</option>
+                <option value="fantasy">Huyền Huyễn - Ma Pháp - Trùng Sinh</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <span>Khám phá ngay</span>
+            </button>
+
+          </form>
+
+          <!-- Thanh nút lọc thể loại nhanh -->
+          <div class="genre-filter-bar" style="margin-top: var(--space-3); margin-bottom: 0;">
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">Lọc nhanh:</span>
+            <a href="#manhwa-section" class="genre-pill genre-pill-purple active">🇰🇷 Manhwa Siêu Phẩm</a>
+            <a href="#manga-school" class="genre-pill genre-pill-red">🇯🇵 Manga Học Đường</a>
+            <a href="#truyen-noi-bat" class="genre-pill">🔥 Solo Leveling</a>
+            <a href="#manhwa-section" class="genre-pill">👊 Lookism</a>
+            <a href="#manga-school" class="genre-pill">🌸 Kaguya-sama</a>
+            <a href="#manga-school" class="genre-pill">🕵️ Spy x Family</a>
+            <a href="#manga-school" class="genre-pill">🏸 Blue Box (Hộp Xanh)</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. SECTION ĐẶC BIỆT: 🔥 VŨ TRỤ MANHWA HÀN QUỐC (SOLO LEVELING, LOOKISM,...)
+         ====================================================================== -->
+    <section class="featured-section" id="manhwa-section" aria-labelledby="manhwa-heading">
+      <div class="container">
+        
+        <div class="section-header">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <span class="tag-badge tag-manhwa">🇰🇷 Tuyển Tập Webtoon Đỉnh Cao</span>
+              <span class="tag-badge tag-hot">HOT NHẤT 2026</span>
+            </div>
+            <h2 id="manhwa-heading" class="section-title">Vũ Trụ Manhwa Hành Động & Thợ Săn</h2>
+            <p class="section-desc">Cốt truyện nghẹt thở, thăng cấp bất tận, băng đảng học đường và những trận huyết chiến kinh điển</p>
+          </div>
+          <a href="story.html" class="view-all-link">Xem tất cả Manhwa →</a>
+        </div>
+
+        <!-- BỐ CỤC ĐIỂM NHẤN MANHWA: 1 HERO SPOTLIGHT + 3 CARDS BÊN CẠNH -->
+        <div class="featured-layout">
+          
+          <!-- SPOTLIGHT 1: SOLO LEVELING (TÔI THĂNG CẤP MỘT MÌNH) -->
+          <article class="featured-main" style="border-color: rgba(168, 85, 247, 0.4);">
+            <div class="featured-main-cover">
+              <img src="images/solo_leveling.jpg" 
+                   alt="Solo Leveling - Tôi Thăng Cấp Một Mình" 
+                   loading="lazy">
+              <span class="featured-badge-highlight" style="background:#9333EA; color:#FFF;">★ Top 1 Manhwa Mọi Thời Đại</span>
+            </div>
+
+            <div class="featured-main-body">
+              <div>
+                <div class="story-meta-tags">
+                  <span class="tag-badge tag-manhwa">Manhwa Hàn Quốc</span>
+                  <span class="tag-badge tag-hunter">Thợ Săn Hạng E → Chúa Tể</span>
+                  <span class="tag-badge tag-status-completed">Hoàn Thành • 200 Chương</span>
+                  <span class="tag-badge" style="background:rgba(244, 197, 66, 0.2); color:#F4C542;">★ 5.0 (320K Đánh Giá)</span>
+                </div>
+
+                <h3 class="story-title">
+                  <a href="story.html">Solo Leveling: Tôi Thăng Cấp Một Mình (나 혼자만 레벨업)</a>
+                </h3>
+
+                <p class="story-author">
+                  <span>Tác giả:</span>
+                  <span class="story-author-name">Chugong & Họa sĩ DUBU (REDICE Studio)</span>
+                </p>
+
+                <p class="story-excerpt">
+                  Mười năm trước, sau khi "Cánh Cổng" kết nối thế giới thực với thế giới quái vật mở ra, một số người đã nhận được sức mạnh thức tỉnh, được gọi là "Thợ Săn". Sung Jin-woo, chàng trai trẻ bị xem là "Thợ săn yếu nhất nhân loại" hạng E, đối mặt cái chết trong ngục tối kép bí ẩn. Nhưng trước ngưỡng cửa tử thần, một bảng nhiệm vụ bí ẩn chỉ mình cậu nhìn thấy đã hiện lên: <em>"Chúc mừng người chơi, bạn đã nhận quyền thăng cấp không giới hạn!"</em>
+                </p>
+              </div>
+
+              <div class="story-card-actions">
+                <a href="reader.html" class="btn btn-primary" style="background:#9333EA; box-shadow:0 4px 14px rgba(147,51,234,0.4);">
+                  <span>Đọc Ngay Chương 1</span>
+                  <span aria-hidden="true">⚡</span>
+                </a>
+                <a href="story.html" class="btn btn-secondary" style="border-color:#C084FC; color:#E9D5FF;">
+                  <span>Xem Chi Tiết & Mục Lục</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3 BỘ MANHWA ĐÌNH ĐÁM KÈM THEO: LOOKISM, TOÀN TRÍ ĐỘC GIẢ, TOWER OF GOD -->
+          <div class="featured-sub-list">
+            
+            <!-- Manhwa 1: Lookism (Diện Mạo Đích Thực) -->
+            <article class="featured-sub-card" style="border-color: rgba(249, 115, 22, 0.3);">
+              <div class="featured-sub-cover">
+                <img src="images/lookism.jpg" 
+                     alt="Lookism - Diện Mạo Đích Thực" loading="lazy">
+              </div>
+              <div class="featured-sub-info">
+                <div style="display:flex; gap:4px; margin-bottom:4px;">
+                  <span class="tag-badge tag-hot">Học Đường Đẫm Máu</span>
+                  <span class="tag-badge tag-manhwa">Hàn Quốc</span>
+                </div>
+                <h4 class="featured-sub-title">
+                  <a href="story.html">Lookism (Diện Mạo Đích Thực)</a>
+                </h4>
+                <p class="featured-sub-meta">Tác giả: <strong>Park Tae-joon</strong> • Chap 512 (Đang ra)</p>
+                <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                  Park Hyung-suk, cậu học sinh béo phì bị bắt nạt tàn bạo, một ngày thức dậy bỗng sở hữu thêm một cơ thể hoàn mỹ tuyệt đối cùng sức mạnh võ thuật đỉnh cao!
+                </p>
+              </div>
+              <a href="reader.html" class="btn btn-secondary btn-sm" aria-label="Đọc Lookism">Đọc</a>
+            </article>
+
+            <!-- Manhwa 2: Omniscient Reader's Viewpoint (Toàn Trí Độc Giả) -->
+            <article class="featured-sub-card" style="border-color: rgba(99, 102, 241, 0.3);">
+              <div class="featured-sub-cover">
+                <img src="images/omniscient_reader.jpg" 
+                     alt="Toàn Trí Độc Giả - Omniscient Reader" loading="lazy">
+              </div>
+              <div class="featured-sub-info">
+                <div style="display:flex; gap:4px; margin-bottom:4px;">
+                  <span class="tag-badge tag-hunter">Kịch Bản Tận Thế</span>
+                  <span class="tag-badge tag-status-ongoing">Chap 215</span>
+                </div>
+                <h4 class="featured-sub-title">
+                  <a href="story.html">Toàn Trí Độc Giả (ORV)</a>
+                </h4>
+                <p class="featured-sub-meta">Tác giả: <strong>sing N song & Sleepy-C</strong> • Top 2 Webtoon</p>
+                <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                  Kim Dokja là độc giả duy nhất đọc trọn bộ tiểu thuyết dài 3149 chương. Khi chương cuối đăng tải, thế giới thực biến thành chính câu chuyện ngày tận thế ấy!
+                </p>
+              </div>
+              <a href="reader.html" class="btn btn-secondary btn-sm" aria-label="Đọc Toàn Trí Độc Giả">Đọc</a>
+            </article>
+
+            <!-- Manhwa 3: Tower of God (Tòa Tháp Của Chúa) -->
+            <article class="featured-sub-card">
+              <div class="featured-sub-cover">
+                <img src="images/tower_of_god.jpg" 
+                     alt="Tower of God - Tòa Tháp Của Chúa" loading="lazy">
+              </div>
+              <div class="featured-sub-info">
+                <div style="display:flex; gap:4px; margin-bottom:4px;">
+                  <span class="tag-badge tag-manhwa">Huyền Bí • Khám Phá</span>
+                  <span class="tag-badge tag-status-ongoing">Chap 618</span>
+                </div>
+                <h4 class="featured-sub-title">
+                  <a href="story.html">Tower of God (Tòa Tháp Của Chúa)</a>
+                </h4>
+                <p class="featured-sub-meta">Tác giả: <strong>SIU</strong> • Trải nghiệm leo tháp kỳ vĩ</p>
+                <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                  Tiền tài, quyền lực, trả thù hay ước nguyện vĩ đại nhất? Bất cứ điều gì bạn khao khát đều nằm trên đỉnh ngọn tháp thần bí.
+                </p>
+              </div>
+              <a href="reader.html" class="btn btn-secondary btn-sm" aria-label="Đọc Tower of God">Đọc</a>
+            </article>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. SECTION ĐẶC BIỆT: 🏫 MANGA THANH XUÂN & HỌC ĐƯỜNG NHẬT BẢN
+         ====================================================================== -->
+    <section class="latest-section" id="manga-school" aria-labelledby="manga-heading" style="background-color: var(--bg-soft);">
+      <div class="container">
+        
+        <div class="section-header">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <span class="tag-badge tag-manga">🇯🇵 Manga Nhật Bản Chọn Lọc</span>
+              <span class="tag-badge tag-school">Thanh Xuân Học Đường</span>
+            </div>
+            <h2 id="manga-heading" class="section-title">Manga Học Đường & Rom-Com Siêu Cuốn</h2>
+            <p class="section-desc">Đấu trí tỏ tình tại hội học sinh, điệp viên gia đình học viện Eden, và những tình yêu tuổi học trò trong trẻo</p>
+          </div>
+          <a href="#manga-school" class="view-all-link">Xem bảng vàng Manga →</a>
+        </div>
+
+        <!-- LƯỚI 6 TRUYỆN MANGA HỌC ĐƯỜNG TIÊU BIỂU -->
+        <div class="story-grid" style="grid-template-columns: repeat(3, 1fr);">
+          
+          <!-- Manga 1: Kaguya-sama: Love Is War (Cuộc Chiến Tỏ Tình) -->
+          <article class="book-card" style="border-color: rgba(244, 63, 94, 0.35);">
+            <div class="book-card-cover-wrap">
+              <img src="images/kaguya_sama.jpg" 
+                   alt="Kaguya-sama: Love is War" class="book-card-cover" loading="lazy">
+              <span class="book-card-badge tag-status-completed" style="background:#E11D48; color:#FFF;">Hoàn Thành • 281C</span>
+            </div>
+            <div class="book-card-body">
+              <div>
+                <div style="display:flex; gap:4px; margin-bottom:6px;">
+                  <span class="tag-badge tag-manga">Manga</span>
+                  <span class="tag-badge tag-school">Học Viện Shuchiin</span>
+                </div>
+                <h3 class="book-card-title">
+                  <a href="story.html">Kaguya-sama: Cuộc Chiến Tỏ Tình (かぐや様は告らせたい)</a>
+                </h3>
+                <p class="book-card-author">Tác giả: Aka Akasaka • Rom-Com Đấu Trí</p>
+                <p style="font-size:0.84rem; color:var(--text-color); margin-top:6px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                  Trong tình yêu, kẻ nào rung động trước kẻ đó thua cuộc! Hội trưởng Miyuki Shirogane và Phó hội trưởng tiểu thư Kaguya Shinomiya mở màn những màn đấu trí đỉnh cao khiến người kia phải ngỏ lời tỏ tình.
+                </p>
+              </div>
+              <div class="book-card-footer">
+                <span class="book-card-chapter" style="color:#FDA4AF;">★ 4.9 (180K Bình Chọn)</span>
+                <a href="reader.html" class="btn btn-primary btn-sm" style="background:#E11D48; padding:3px 12px; font-size:0.8rem;">Đọc ngay</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Manga 2: Spy x Family (Gia Đình Điệp Viên - Học Viện Eden) -->
+          <article class="book-card" style="border-color: rgba(14, 165, 233, 0.35);">
+            <div class="book-card-cover-wrap">
+              <img src="images/spy_x_family.jpg" 
+                   alt="Spy x Family" class="book-card-cover" loading="lazy">
+              <span class="book-card-badge tag-status-ongoing">Chap 104 • Đang ra</span>
+            </div>
+            <div class="book-card-body">
+              <div>
+                <div style="display:flex; gap:4px; margin-bottom:6px;">
+                  <span class="tag-badge tag-manga">Manga</span>
+                  <span class="tag-badge tag-school">Học Đường & Hài Hước</span>
+                </div>
+                <h3 class="book-card-title">
+                  <a href="story.html">Spy x Family (Gia Đình Điệp Viên)</a>
+                </h3>
+                <p class="book-card-author">Tác giả: Tatsuya Endo • Hành Động Hài Hước</p>
+                <p style="font-size:0.84rem; color:var(--text-color); margin-top:6px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                  Điệp viên Twilight xây dựng gia đình giả để xâm nhập học viện quý tộc Eden: cô con gái Anya đọc được suy nghĩ người khác và cô vợ sát thủ Yor Forger xinh đẹp mà chết người!
+                </p>
+              </div>
+              <div class="book-card-footer">
+                <span class="book-card-chapter" style="color:#7DD3FC;">Anya & Học Viện Eden</span>
+                <a href="reader.html" class="btn btn-primary btn-sm" style="padding:3px 12px; font-size:0.8rem;">Đọc ngay</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Manga 3: Blue Box (Hộp Xanh - Cầu Lông & Bóng Rổ Học Đường) -->
+          <article class="book-card">
+            <div class="book-card-cover-wrap">
+              <img src="images/blue_box.jpg" 
+                   alt="Blue Box - Hộp Xanh" class="book-card-cover" loading="lazy">
+              <span class="book-card-badge tag-status-ongoing">Chap 158 • Đang ra</span>
+            </div>
+            <div class="book-card-body">
+              <div>
+                <div style="display:flex; gap:4px; margin-bottom:6px;">
+                  <span class="tag-badge tag-school">Thể Thao & Tình Cảm</span>
+                  <span class="tag-badge tag-manga">Shonen Jump</span>
+                </div>
+                <h3 class="book-card-title">
+                  <a href="story.html">Blue Box (Hộp Xanh - アオのハコ)</a>
+                </h3>
+                <p class="book-card-author">Tác giả: Kouji Miura • Cầu Lông & Bóng Rổ</p>
+                <p style="font-size:0.84rem; color:var(--text-color); margin-top:6px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                  Taiki Inomata thành viên CLB cầu lông thầm mến đàn chị Chinatsu Kano ngôi sao bóng rổ. Định mệnh đưa đẩy khi một ngày nọ, Chinatsu bất ngờ chuyển đến sống chung dưới một mái nhà!
+                </p>
+              </div>
+              <div class="book-card-footer">
+                <span class="book-card-chapter">CLB Trường Eimei</span>
+                <a href="reader.html" class="btn btn-secondary btn-sm" style="padding:3px 12px; font-size:0.8rem;">Đọc ngay</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Manga 4: Jujutsu Kaisen (Chú Thuật Hồi Chiến - Trường Học Chú Thuật) -->
+          <article class="book-card">
+            <div class="book-card-cover-wrap">
+              <img src="images/jujutsu_kaisen.jpg" 
+                   alt="Jujutsu Kaisen" class="book-card-cover" loading="lazy">
+              <span class="book-card-badge tag-status-completed" style="background:#3B82F6; color:#FFF;">Hoàn Thành • 271C</span>
+            </div>
+            <div class="book-card-body">
+              <div>
+                <div style="display:flex; gap:4px; margin-bottom:6px;">
+                  <span class="tag-badge tag-manga">Manga</span>
+                  <span class="tag-badge tag-hunter">Trường Chú Thuật Tokyo</span>
+                </div>
+                <h3 class="book-card-title">
+                  <a href="story.html">Chú Thuật Hồi Chiến (Jujutsu Kaisen)</a>
+                </h3>
+                <p class="book-card-author">Tác giả: Gege Akutami • Gojo Satoru & Sukuna</p>
+                <p style="font-size:0.84rem; color:var(--text-color); margin-top:6px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                  Yuji Itadori nuốt phải ngón tay nguyền vương Sukuna và gia nhập Cao đẳng Chú thuật Tokyo dưới sự dẫn dắt của thầy Gojo Satoru để thanh tẩy những nguyền hồn tà ác nhất.
+                </p>
+              </div>
+              <div class="book-card-footer">
+                <span class="book-card-chapter">Trận Chiến Shinjuku</span>
+                <a href="reader.html" class="btn btn-secondary btn-sm" style="padding:3px 12px; font-size:0.8rem;">Đọc</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Manga 5: Horimiya (Hori & Miyamura - Góc Khuất Tuổi Trẻ) -->
+          <article class="book-card">
+            <div class="book-card-cover-wrap">
+              <img src="images/horimiya.jpg" 
+                   alt="Horimiya" class="book-card-cover" loading="lazy">
+              <span class="book-card-badge tag-status-completed">Hoàn Thành • 122C</span>
+            </div>
+            <div class="book-card-body">
+              <div>
+                <div style="display:flex; gap:4px; margin-bottom:6px;">
+                  <span class="tag-badge tag-school">Học Đường Ngọt Ngào</span>
+                  <span class="tag-badge tag-manga">Slice of Life</span>
+                </div>
+                <h3 class="book-card-title">
+                  <a href="story.html">Horimiya (Hori & Miyamura)</a>
+                </h3>
+                <p class="book-card-author">Tác giả: HERO & Daisuke Hagiwara</p>
+                <p style="font-size:0.84rem; color:var(--text-color); margin-top:6px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                  Nữ sinh hoàn hảo Hori và cậu bạn mọt sách trầm lặng Miyamura tình cờ bắt gặp con người thật hoàn toàn khác biệt của nhau ngoài giờ học, từ đó mở ra mối lương duyên ấm áp.
+                </p>
+              </div>
+              <div class="book-card-footer">
+                <span class="book-card-chapter">Tuổi Học Trò Đẹp Nhất</span>
+                <a href="reader.html" class="btn btn-secondary btn-sm" style="padding:3px 12px; font-size:0.8rem;">Đọc</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Manga 6: Chainsaw Man (Người Cưa - Học Đường & Săn Quỷ) -->
+          <article class="book-card">
+            <div class="book-card-cover-wrap">
+              <img src="images/chainsaw_man.jpg" 
+                   alt="Chainsaw Man" class="book-card-cover" loading="lazy">
+              <span class="book-card-badge tag-status-ongoing">Chap 176 • Đang ra</span>
+            </div>
+            <div class="book-card-body">
+              <div>
+                <div style="display:flex; gap:4px; margin-bottom:6px;">
+                  <span class="tag-badge tag-hot">Siêu Dị Biệt</span>
+                  <span class="tag-badge tag-manga">Dark Fantasy</span>
+                </div>
+                <h3 class="book-card-title">
+                  <a href="story.html">Chainsaw Man: Phần Học Đường (Quỷ Chiến Tranh)</a>
+                </h3>
+                <p class="book-card-author">Tác giả: Tatsuki Fujimoto • Denji & Asa Mitaka</p>
+                <p style="font-size:0.84rem; color:var(--text-color); margin-top:6px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                  Denji bước vào trường trung học với ước mong bình dị là được một cô gái yêu thương, nhưng sự xuất hiện của Asa Mitaka và Quỷ Chiến Tranh kéo theo hàng loạt biến cố điên rồ.
+                </p>
+              </div>
+              <div class="book-card-footer">
+                <span class="book-card-chapter">Trường Trung Học Thứ 4</span>
+                <a href="reader.html" class="btn btn-secondary btn-sm" style="padding:3px 12px; font-size:0.8rem;">Đọc</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         6. BẢNG XẾP HẠNG (<section id="bang-xep-hang">) - TOP 5 MANHWA & MANGA
+         ====================================================================== -->
+    <section class="rankings-section" id="bang-xep-hang" aria-labelledby="rank-heading">
+      <div class="container">
+        
+        <div class="section-header">
+          <div>
+            <h2 id="rank-heading" class="section-title">Bảng Xếp Hạng Độc Giả Toàn Sàn</h2>
+            <p class="section-desc">Top 5 bộ truyện Manhwa, Manga và tiểu thuyết có lượt đọc kỷ lục tháng này</p>
+          </div>
+          <span class="tag-badge" style="background:rgba(212,163,56,0.25); color:#F4D068; border:1px solid #F4D068;">Cập Nhật Thời Gian Thực</span>
+        </div>
+
+        <div class="ranking-list">
+          
+          <!-- TOP 1 - SOLO LEVELING -->
+          <article class="ranking-item ranking-item-top1" style="border: 1.5px solid rgba(244, 197, 66, 0.6); box-shadow: 0 10px 30px rgba(244, 197, 66, 0.15);">
+            <div class="ranking-number ranking-number-1" aria-label="Hạng 1">01</div>
+            <div class="ranking-cover">
+              <img src="images/solo_leveling.jpg" 
+                   alt="Solo Leveling Top 1" loading="lazy">
+            </div>
+            <div class="ranking-details">
+              <div style="display:flex; gap:6px; margin-bottom:4px;">
+                <span class="tag-badge tag-manhwa">Manhwa Hàn Quốc</span>
+                <span class="tag-badge tag-hunter">Thợ Săn Hạng E</span>
+              </div>
+              <h3 class="ranking-title">
+                <a href="story.html">Solo Leveling: Tôi Thăng Cấp Một Mình 👑</a>
+              </h3>
+              <p class="ranking-meta">
+                <span>Tác giả: <strong>Chugong & DUBU</strong></span>
+                <span>•</span>
+                <span>Trạng thái: Hoàn Thành (200 Chương)</span>
+                <span>•</span>
+                <span style="color:#F4D068;">Đánh giá: 5.0/5.0 ★</span>
+              </p>
+            </div>
+            <div class="ranking-reads">
+              <span class="read-count-pill" style="background:rgba(244,197,66,0.2); color:#F4D068;">3.450.000 Lượt đọc</span>
+              <a href="reader.html" class="btn btn-primary btn-sm">Đọc ngay</a>
+            </div>
+          </article>
+
+          <!-- TOP 2 - LOOKISM -->
+          <article class="ranking-item" style="border: 1px solid rgba(249, 115, 22, 0.4);">
+            <div class="ranking-number ranking-number-2" aria-label="Hạng 2">02</div>
+            <div class="ranking-cover">
+              <img src="images/lookism.jpg" 
+                   alt="Lookism Top 2" loading="lazy">
+            </div>
+            <div class="ranking-details">
+              <div style="display:flex; gap:6px; margin-bottom:4px;">
+                <span class="tag-badge tag-manhwa">Manhwa</span>
+                <span class="tag-badge tag-hot">Học Đường Đẫm Máu</span>
+              </div>
+              <h3 class="ranking-title">
+                <a href="story.html">Lookism (Diện Mạo Đích Thực)</a>
+              </h3>
+              <p class="ranking-meta">
+                <span>Tác giả: <strong>Park Tae-joon</strong></span>
+                <span>•</span>
+                <span>512 Chương (Đang ra)</span>
+                <span>•</span>
+                <span style="color:#C0C0C0;">Đánh giá: 4.9/5.0 ★</span>
+              </p>
+            </div>
+            <div class="ranking-reads">
+              <span class="read-count-pill" style="color:#C0C0C0; background:rgba(192,192,192,0.15);">2.820.000 Lượt đọc</span>
+              <a href="reader.html" class="btn btn-secondary btn-sm" style="border-color:#FFF; color:#FFF;">Đọc</a>
+            </div>
+          </article>
+
+          <!-- TOP 3 - KAGUYA-SAMA -->
+          <article class="ranking-item" style="border: 1px solid rgba(244, 63, 94, 0.4);">
+            <div class="ranking-number ranking-number-3" aria-label="Hạng 3">03</div>
+            <div class="ranking-cover">
+              <img src="images/kaguya_sama.jpg" 
+                   alt="Kaguya-sama Top 3" loading="lazy">
+            </div>
+            <div class="ranking-details">
+              <div style="display:flex; gap:6px; margin-bottom:4px;">
+                <span class="tag-badge tag-manga">Manga Nhật</span>
+                <span class="tag-badge tag-school">Hội Học Sinh Shuchiin</span>
+              </div>
+              <h3 class="ranking-title">
+                <a href="story.html">Kaguya-sama: Cuộc Chiến Tỏ Tình</a>
+              </h3>
+              <p class="ranking-meta">
+                <span>Tác giả: <strong>Aka Akasaka</strong></span>
+                <span>•</span>
+                <span>Hoàn Thành (281 Chương)</span>
+                <span>•</span>
+                <span style="color:#D4945A;">Đánh giá: 4.9/5.0 ★</span>
+              </p>
+            </div>
+            <div class="ranking-reads">
+              <span class="read-count-pill" style="color:#FDA4AF; background:rgba(244,63,94,0.15);">2.210.000 Lượt đọc</span>
+              <a href="reader.html" class="btn btn-secondary btn-sm" style="border-color:#FFF; color:#FFF;">Đọc</a>
+            </div>
+          </article>
+
+          <!-- TOP 4 - TOÀN TRÍ ĐỘC GIẢ -->
+          <article class="ranking-item">
+            <div class="ranking-number" style="color:#9F938B;" aria-label="Hạng 4">04</div>
+            <div class="ranking-cover">
+              <img src="images/omniscient_reader.jpg" 
+                   alt="Toàn Trí Độc Giả Top 4" loading="lazy">
+            </div>
+            <div class="ranking-details">
+              <div style="display:flex; gap:6px; margin-bottom:4px;">
+                <span class="tag-badge tag-manhwa">Manhwa Hàn</span>
+                <span class="tag-badge tag-hunter">Tận Thế Kịch Bản</span>
+              </div>
+              <h3 class="ranking-title">
+                <a href="story.html">Toàn Trí Độc Giả (Omniscient Reader's Viewpoint)</a>
+              </h3>
+              <p class="ranking-meta">
+                <span>Tác giả: <strong>sing N song</strong></span>
+                <span>•</span>
+                <span>215 Chương (Đang ra)</span>
+              </p>
+            </div>
+            <div class="ranking-reads">
+              <span class="read-count-pill">1.950.000 Lượt đọc</span>
+              <a href="reader.html" class="btn btn-secondary btn-sm">Đọc</a>
+            </div>
+          </article>
+
+          <!-- TOP 5 - SPY X FAMILY -->
+          <article class="ranking-item">
+            <div class="ranking-number" style="color:#9F938B;" aria-label="Hạng 5">05</div>
+            <div class="ranking-cover">
+              <img src="images/spy_x_family.jpg" 
+                   alt="Spy x Family Top 5" loading="lazy">
+            </div>
+            <div class="ranking-details">
+              <div style="display:flex; gap:6px; margin-bottom:4px;">
+                <span class="tag-badge tag-manga">Manga Nhật</span>
+                <span class="tag-badge tag-school">Anya Học Viện Eden</span>
+              </div>
+              <h3 class="ranking-title">
+                <a href="story.html">Spy x Family (Gia Đình Điệp Viên)</a>
+              </h3>
+              <p class="ranking-meta">
+                <span>Tác giả: <strong>Tatsuya Endo</strong></span>
+                <span>•</span>
+                <span>104 Chương (Đang ra)</span>
+              </p>
+            </div>
+            <div class="ranking-reads">
+              <span class="read-count-pill">1.680.000 Lượt đọc</span>
+              <a href="reader.html" class="btn btn-secondary btn-sm">Đọc</a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         7. DANH MỤC THỂ LOẠI (CSS GRID 6 CỘT)
+         ====================================================================== -->
+    <section class="categories-section" id="the-loai" aria-labelledby="cat-heading">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 id="cat-heading" class="section-title">Danh Mục Thể Loại Đa Dạng</h2>
+            <p class="section-desc">Phân loại rõ ràng giúp bạn tìm thấy bộ truyện ưng ý nhất chỉ trong vài giây</p>
+          </div>
+          <a href="#the-loai" class="view-all-link">Xem tất cả 24 thể loại →</a>
+        </div>
+
+        <div class="categories-grid">
+          
+          <!-- Thể loại 1: Manhwa Siêu Phẩm -->
+          <article class="category-card" style="border-color: rgba(168, 85, 247, 0.4);">
+            <div class="category-icon" aria-hidden="true">🇰🇷</div>
+            <h3 class="category-name">Manhwa Siêu Cấp</h3>
+            <p class="category-desc">Thợ săn, hệ thống thăng cấp, tranh đoạt quyền lực ngục tối</p>
+            <span class="category-count" style="color:#D8B4FE;">850 bộ truyện</span>
+          </article>
+
+          <!-- Thể loại 2: Manga Học Đường -->
+          <article class="category-card" style="border-color: rgba(244, 63, 94, 0.4);">
+            <div class="category-icon" aria-hidden="true">🏫</div>
+            <h3 class="category-name">Manga Học Đường</h3>
+            <p class="category-desc">Tình yêu tuổi học trò, hội học sinh, đấu trí và thanh xuân</p>
+            <span class="category-count" style="color:#FDA4AF;">720 bộ truyện</span>
+          </article>
+
+          <!-- Thể loại 3: Hành Động & Võ Thuật -->
+          <article class="category-card" style="border-color: rgba(249, 115, 22, 0.4);">
+            <div class="category-icon" aria-hidden="true">⚔️</div>
+            <h3 class="category-name">Băng Đảng & Võ Thuật</h3>
+            <p class="category-desc">Đánh nhau trường học như Lookism, quyền thuật đường phố</p>
+            <span class="category-count" style="color:#FDBA74;">610 bộ truyện</span>
+          </article>
+
+          <!-- Thể loại 4: Thể Thao Thanh Xuân -->
+          <article class="category-card" style="border-color: rgba(14, 165, 233, 0.4);">
+            <div class="category-icon" aria-hidden="true">🏸</div>
+            <h3 class="category-name">Thể Thao & Nhiệt Huyết</h3>
+            <p class="category-desc">Cầu lông, bóng rổ, bóng chuyền và khát vọng vươn lên đỉnh cao</p>
+            <span class="category-count" style="color:#7DD3FC;">340 bộ truyện</span>
+          </article>
+
+          <!-- Thể loại 5: Trinh Thám & Tâm Lý -->
+          <article class="category-card">
+            <div class="category-icon" aria-hidden="true">🕵️‍♂️</div>
+            <h3 class="category-name">Trinh Thám & Tâm Lý</h3>
+            <p class="category-desc">Đấu trí nghẹt thở, giải mã những âm mưu ẩn sau bức màn</p>
+            <span class="category-count">295 bộ truyện</span>
+          </article>
+
+          <!-- Thể loại 6: Đời Thường & Chữa Lành -->
+          <article class="category-card">
+            <div class="category-icon" aria-hidden="true">☕</div>
+            <h3 class="category-name">Đời Thường & Chữa Lành</h3>
+            <p class="category-desc">Lát cắt cuộc sống bình dị, ấm áp xoa dịu tâm hồn sau giờ học tập</p>
+            <span class="category-count">480 bộ truyện</span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         8. KHỐI CTA ĐĂNG KÝ THÀNH VIÊN TRUYỆN MỘC
+         ====================================================================== -->
+    <section class="container" style="margin-bottom: var(--space-6);" aria-label="Kêu gọi hành động">
+      <div class="cta-banner" style="background: linear-gradient(135deg, #1C1528 0%, #120F1D 100%); border: 1px solid rgba(168, 85, 247, 0.3);">
+        <div class="cta-content">
+          <span class="tag-badge tag-manhwa" style="margin-bottom:8px; display:inline-block;">Gia Nhập Cộng Đồng TRUYỆN MỘC</span>
+          <h2 style="font-size:1.85rem; color:#FFF; margin-bottom:8px;">Nhận thông báo khi Solo Leveling & Lookism ra chương mới!</h2>
+          <p style="color:var(--text-muted); font-size:0.95rem; max-width:540px;">
+            Đăng ký tài khoản miễn phí để đánh dấu trang, lưu tiến trình đọc và đồng bộ giữa máy tính và điện thoại mà không cần ứng dụng.
+          </p>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="#auth-register" class="btn btn-primary" style="background:#9333EA;">Đăng Ký Miễn Phí</a>
+          <a href="reader.html" class="btn btn-outline-white">Đọc Thử Ngay</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       FOOTER (<footer class="site-footer">) - DARK THEME
+       ======================================================================== -->
+  <footer class="site-footer" id="footer" aria-labelledby="footer-heading">
+    <div class="container">
+      
+      <h2 id="footer-heading" class="visually-hidden" style="position:absolute; width:1px; height:1px; overflow:hidden;">Thông tin chân trang TRUYỆN MỘC</h2>
+
+      <div class="footer-grid">
+        
+        <!-- Cột 1: Thương hiệu & Giới thiệu -->
+        <div class="footer-col footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: var(--space-3);" aria-label="Về đầu trang TRUYỆN MỘC">
+            <span class="logo-icon" aria-hidden="true">📖</span>
+            <div class="logo-text">
+              <span class="logo-title">TRUYỆN MỘC</span>
+              <span class="logo-tagline">Đọc Chậm • Cảm Sâu • Dark Edition</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Website đọc truyện online thuần <strong>HTML5 & CSS3</strong>, không sử dụng JavaScript theo chuẩn bài tập môn Thiết kế Web (Vibe Coding). Tối ưu giao diện Dark Mode bảo vệ mắt độc giả ban đêm.
+          </p>
+          <div style="margin-top:12px; font-size:0.8rem; color:var(--text-muted);">
+            <span>Công nghệ: Pure Semantic HTML5 & Modern CSS3</span>
+          </div>
+        </div>
+
+        <!-- Cột 2: Manhwa & Manga Hot -->
+        <div class="footer-col">
+          <h3 class="footer-title">Siêu Phẩm Nổi Bật</h3>
+          <ul class="footer-links">
+            <li><a href="story.html">Solo Leveling (Tôi Thăng Cấp Một Mình)</a></li>
+            <li><a href="story.html">Lookism (Diện Mạo Đích Thực)</a></li>
+            <li><a href="story.html">Kaguya-sama: Cuộc Chiến Tỏ Tình</a></li>
+            <li><a href="story.html">Toàn Trí Độc Giả (ORV)</a></li>
+            <li><a href="story.html">Spy x Family (Gia Đình Điệp Viên)</a></li>
+            <li><a href="story.html">Blue Box (Hộp Xanh Học Đường)</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 3: Thể loại truyện -->
+        <div class="footer-col">
+          <h3 class="footer-title">Thể Loại Truyện</h3>
+          <ul class="footer-links">
+            <li><a href="#the-loai">Manhwa Hàn Quốc</a></li>
+            <li><a href="#the-loai">Manga Học Đường Nhật Bản</a></li>
+            <li><a href="#the-loai">Băng Đảng & Học Đường Hành Động</a></li>
+            <li><a href="#the-loai">Rom-Com & Thanh Xuân Tuổi Trẻ</a></li>
+            <li><a href="#the-loai">Thể Thao & Nhiệt Huyết</a></li>
+            <li><a href="#the-loai">Đời Thường & Chữa Lành</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 4: Thông tin đồ án / Môn học -->
+        <div class="footer-col">
+          <h3 class="footer-title">Thông Tin Dự Án</h3>
+          <ul class="footer-links">
+            <li><a href="README.md">Tài liệu dự án README.md</a></li>
+            <li><a href="PROMPT_LOG.md">Nhật ký Vibe Coding (Prompt Log)</a></li>
+            <li><a href="story.html">Trang chi tiết truyện (story.html)</a></li>
+            <li><a href="reader.html">Giao diện đọc truyện (reader.html)</a></li>
+            <li><a href="#top">Lên đầu trang ↑</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Dòng bản quyền cuối trang -->
+      <div class="footer-bottom">
+        <p>© 2026 TRUYỆN MỘC — Dự án Bài tập Thiết kế Web (Vibe Coding). 100% HTML5 & CSS3 thuần.</p>
+        <p style="color:var(--text-muted); font-size:0.8rem;">
+          Mọi hình ảnh và tác phẩm thuộc về tác giả gốc (Chugong, DUBU, Park Tae-joon, Aka Akasaka, Tatsuya Endo, Kouji Miura,...).
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Nút cuộn mượt lên đầu trang bằng CSS Pure (#top) -->
+  <a href="#top" class="back-to-top" aria-label="Cuộn lên đầu trang">
+    <span aria-hidden="true">↑</span>
+  </a>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chương 1: Thợ Săn Yếu Nhất Nhân Loại - Solo Leveling | TRUYỆN MỘC (Dark Mode)</title>
+  
+  <meta name="description" content="Đọc Chương 1: Thợ Săn Yếu Nhất Nhân Loại - Solo Leveling (Tôi Thăng Cấp Một Mình) trên TRUYỆN MỘC. Trải nghiệm đọc Dark Mode mượt mà, chuyển đổi theme và cỡ chữ bằng Pure CSS.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333EA'><path d='M19 2H6c-1.2 0-2 .8-2 2v16c0 1.2.8 2 2 2h13c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1zm-1 18H6c-.6 0-1-.4-1-1V5c.3-.6.6-.8 1-.8h12v15.8z'/></svg>">
+</head>
+<body>
+
+  <!-- KỸ THUẬT CSS-ONLY: RADIO INPUTS ĐỔI THEME VÀ CỠ CHỮ TOÀN TRANG (KHÔNG DÙNG JS) -->
+  <input type="radio" name="reader-theme" id="theme-night" class="theme-option-radio" checked>
+  <input type="radio" name="reader-theme" id="theme-sepia" class="theme-option-radio">
+  <input type="radio" name="reader-theme" id="theme-green" class="theme-option-radio">
+
+  <input type="radio" name="reader-font" id="font-sm" class="font-size-radio">
+  <input type="radio" name="reader-font" id="font-md" class="font-size-radio" checked>
+  <input type="radio" name="reader-font" id="font-lg" class="font-size-radio">
+
+  <!-- Checkbox ẩn điều khiển Mobile Menu (CSS-Only) -->
+  <input type="checkbox" id="mobile-menu-toggle" class="nav-toggle-input" aria-label="Đóng mở menu di động">
+
+  <!-- ========================================================================
+       HEADER & THANH ĐIỀU HƯỚNG (<header>, <nav>)
+       ======================================================================== -->
+  <header class="site-header" id="top">
+    <div class="container header-container">
+      
+      <a href="index.html" class="logo" aria-label="Về trang chủ TRUYỆN MỘC">
+        <span class="logo-icon" aria-hidden="true">📖</span>
+        <div class="logo-text">
+          <span class="logo-title">TRUYỆN MỘC</span>
+          <span class="logo-tagline">Đọc Chậm • Cảm Sâu • Dark Edition</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Điều hướng chính của trang web">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+          <li><a href="index.html#manhwa-section" class="nav-link">Manhwa Hot</a></li>
+          <li><a href="index.html#manga-school" class="nav-link">Manga Học Đường</a></li>
+          <li><a href="index.html#bang-xep-hang" class="nav-link">Bảng xếp hạng</a></li>
+          <li><a href="story.html" class="nav-link">Chi tiết truyện</a></li>
+          <li><a href="reader.html" class="nav-link active">Đang đọc</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="story.html" class="btn btn-secondary btn-sm" style="border-color:#C084FC; color:#E9D5FF;">Quay lại mục lục</a>
+      </div>
+
+      <label for="mobile-menu-toggle" class="mobile-hamburger-btn" aria-label="Menu di động">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </label>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MAIN: KHÔNG GIAN ĐỌC TRUYỆN TẬP TRUNG (<main>)
+       ======================================================================== -->
+  <main class="reader-wrapper" id="main-content">
+    
+    <!-- Breadcrumb điều hướng -->
+    <nav class="breadcrumb-nav" aria-label="Đường dẫn bài đọc" style="margin-bottom: var(--space-3);">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item"><a href="index.html#manhwa-section">Manhwa Siêu Cấp</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item"><a href="story.html">Solo Leveling</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li class="breadcrumb-item" aria-current="page"><strong>Chương 1</strong></li>
+      </ol>
+    </nav>
+
+    <!-- THANH CÔNG CỤ ĐỌC TRUYỆN TĨNH (CSS-ONLY CONTROLS) -->
+    <aside class="reader-toolbar" aria-label="Thanh công cụ tùy chỉnh đọc sách">
+      
+      <!-- Chuyển đổi Theme màu sắc bằng nhãn liên kết với radio input -->
+      <div class="reader-control-group">
+        <span class="reader-control-label">Giao diện:</span>
+        <label for="theme-night" class="theme-pill-label pill-night" title="Chế độ ban đêm tối trầm">🌙 Đêm Tối</label>
+        <label for="theme-sepia" class="theme-pill-label pill-sepia" title="Nền giấy mộc êm mắt">📜 Giấy Mộc</label>
+        <label for="theme-green" class="theme-pill-label pill-green" title="Chế độ xanh bảo vệ mắt">🍃 Xanh Dịu</label>
+      </div>
+
+      <!-- Chuyển đổi Cỡ chữ bằng radio input -->
+      <div class="reader-control-group">
+        <span class="reader-control-label">Cỡ chữ:</span>
+        <label for="font-sm" class="font-size-label" title="Cỡ chữ nhỏ (16px)">A-</label>
+        <label for="font-md" class="font-size-label" title="Cỡ chữ chuẩn (18px)">A</label>
+        <label for="font-lg" class="font-size-label" title="Cỡ chữ lớn (21px)">A+</label>
+      </div>
+
+      <!-- Lối tắt danh sách chương -->
+      <div class="reader-control-group">
+        <a href="story.html#danh-sach-chuong" class="btn btn-secondary btn-sm" style="padding:4px 10px; font-size:0.78rem;">
+          ≡ Toàn Bộ 200 Chương
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- NỘI DUNG CHƯƠNG TRUYỆN (<article>) -->
+    <article class="reader-article animate__animated animate__fadeIn" style="border: 1px solid rgba(168, 85, 247, 0.25);">
+      
+      <header class="reader-header">
+        <div style="display:flex; justify-content:center; gap:8px; margin-bottom:8px;">
+          <span class="tag-badge tag-manhwa">Solo Leveling</span>
+          <span class="tag-badge tag-hunter">Phần Mở Đầu</span>
+        </div>
+        <p class="reader-story-title">Solo Leveling (Tôi Thăng Cấp Một Mình)</p>
+        <h1 class="reader-chapter-title">Chương 1: Thợ Săn Yếu Nhất Nhân Loại</h1>
+        <div class="reader-chapter-info">
+          <span>Tác giả: <strong>Chugong & DUBU</strong></span>
+          <span>•</span>
+          <span>Bản dịch chính hãng HD</span>
+          <span>•</span>
+          <span>Thời gian đọc: ~6 phút</span>
+        </div>
+      </header>
+
+      <!-- Nội dung văn bản chương 1 kịch tính -->
+      <div class="reader-content-body">
+        
+        <p class="first-paragraph">
+          Mười năm trước, sau khi "Cánh Cổng" kết nối thế giới của con người với thế giới quái vật mở ra, một số người bình thường đã bất ngờ nhận được những nguồn sức mạnh kỳ lạ. Những con người thức tỉnh ấy được cả thế giới kính cẩn gọi là <strong>"Thợ Săn" (Hunter)</strong>. 
+        </p>
+
+        <p>
+          Không phải thợ săn nào sinh ra cũng đều mạnh mẽ. Cấp bậc của một thợ săn được định đoạt vĩnh viễn ngay từ thời khắc họ thức tỉnh: từ hạng S tối thượng, A, B, C, D cho đến hạng E thấp kém nhất. Một khi năng lượng ma thuật đã định hình, gần như không có bất kỳ cách nào trên thế gian này có thể giúp một thợ săn gia tăng thêm chỉ số của mình.
+        </p>
+
+        <p>
+          Và tôi — <strong>Sung Jin-woo</strong> — chính là một Thợ Săn Hạng E. Thậm chí, trong số những người thuộc hạng E yếu ớt, tôi còn được mệnh danh là <em>"Vũ khí yếu nhất của nhân loại"</em>.
+        </p>
+
+        <blockquote class="reader-quote" style="border-left: 4px solid #9333EA; background: rgba(147, 51, 234, 0.1); color: #E9D5FF;">
+          "Nếu có một danh hiệu dành cho kẻ luôn vào viện sau mỗi chuyến thám hiểm hầm ngục, kẻ suýt mất mạng chỉ vì một con quái Goblin cấp thấp nhất... thì vinh dự đó không ai khác ngoài tôi."
+        </blockquote>
+
+        <p>
+          — "Này, Jin-woo! Cậu lại bị thương nữa rồi à?"
+        </p>
+
+        <p>
+          Người vừa lên tiếng là bác Song, một thợ săn hạng C giàu kinh nghiệm và cũng là người dẫn đầu đoàn thám hiểm ngày hôm nay. Ông nhìn vết rách dài còn đang rỉ máu trên bắp tay tôi rồi khẽ thở dài, đưa sang một cuộn băng gạc y tế.
+        </p>
+
+        <p>
+          — "Chỉ là một vết xước nhỏ do quái vật cào phải thôi bác ạ." — Tôi gượng cười, cắn răng quấn chặt băng gạc lại. 
+        </p>
+
+        <p>
+          Sự thật là tôi không thể từ bỏ. Mẹ tôi vẫn đang nằm hôn mê bất tỉnh trong bệnh viện bởi căn bệnh "Giấc ngủ vĩnh hằng", với viện phí đắt đỏ lên tới hàng triệu won mỗi tháng. Em gái Jin-ah của tôi sắp bước vào kỳ thi đại học. Nếu tôi dừng lại, cả gia đình này sẽ sụp đổ. Dù biết mỗi lần bước qua Cánh Cổng là một lần đặt cược mạng sống của mình trên lưỡi hái tử thần, tôi vẫn phải tiếp tục vung con dao găm cùn rỉ sét của mình về phía trước.
+        </p>
+
+        <p>
+          Hầm ngục hôm nay chúng tôi tấn công chỉ là một hầm ngục hạng D tương đối dễ dàng. Sau hơn hai giờ đồng hồ dọn sạch đám quái vật ma thú, toàn đội mười sáu người chúng tôi đã chuẩn bị gom chiến lợi phẩm để rút lui. Nhưng ngay lúc ấy, một người trong nhóm bỗng hét lên:
+        </p>
+
+        <p>
+          — "Mọi người mau nhìn kìa! Ở sâu bên trong hang đá... có một lối đi khác!"
+        </p>
+
+        <div class="reader-divider" aria-hidden="true">⚔ ⚔ ⚔</div>
+
+        <p>
+          Tất cả chúng tôi dồn ánh mắt về phía cuối hầm ngục. Nơi đó, ẩn sau những tảng đá nứt toác, là một cánh cổng vòm bằng đá đen khổng lồ, tỏa ra luồng khí tức lạnh thấu xương tủy. 
+        </p>
+
+        <p>
+          Đó chính là hiện tượng hiếm gặp nhất trong giới thợ săn: <strong>Hầm Ngục Kép (Dual Dungeon)</strong>.
+        </p>
+
+        <p>
+          Một cuộc bỏ phiếu nhanh chóng diễn ra giữa các thành viên. Tỷ số hòa 8-8. Và lá phiếu quyết định số phận của cả đoàn lại nằm trong tay tôi — người yếu nhất. Nhìn số tiền ma thạch còm cõi trên tay không đủ trả nửa tháng thuốc thang cho mẹ, tôi đã cắn răng giơ tay đồng ý.
+        </p>
+
+        <p>
+          Tôi không hề biết rằng, khoảnh khắc bước chân qua cánh cổng đá đen ấy, tôi đã bước vào thánh địa đẫm máu của đền thờ Cartenon. Nơi những bức tượng đá khổng lồ với đôi mắt đỏ rực đang chờ đợi... và cũng là nơi định mệnh tái sinh của tôi chính thức bắt đầu!
+        </p>
+
+      </div>
+
+      <!-- ĐIỀU HƯỚNG CHƯƠNG (BOTTOM CONTROLS) -->
+      <footer class="reader-navigation">
+        <a href="story.html" class="btn btn-secondary btn-sm" style="border-color:#C084FC; color:#E9D5FF;">
+          ← Giới thiệu truyện
+        </a>
+
+        <a href="story.html#danh-sach-chuong" class="btn btn-secondary btn-sm">
+          ≡ Mục lục chương
+        </a>
+
+        <a href="reader.html" class="btn btn-primary btn-sm" style="background:#9333EA;">
+          Chương 2: Đền Cartenon →
+        </a>
+      </footer>
+
+    </article>
+
+    <!-- KHU VỰC BÌNH LUẬN & CẢM NGHĨ (GIAO DIỆN TĨNH) -->
+    <section class="story-synopsis-box" style="margin-top:var(--space-6); border-color: rgba(168, 85, 247, 0.25);" aria-labelledby="comment-heading">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2 id="comment-heading" class="section-title" style="font-size:1.4rem;">Thảo Luận Độc Giả (1,248)</h2>
+        <span class="tag-badge tag-hunter">Cộng Đồng Solo Leveling</span>
+      </div>
+      <p class="section-desc">Chia sẻ cảm xúc của bạn khi chứng kiến khởi đầu huyền thoại của Sung Jin-woo</p>
+
+      <!-- Bình luận mẫu -->
+      <div style="display:flex; flex-direction:column; gap:12px; margin-top:var(--space-4); margin-bottom:var(--space-4);">
+        <div style="background:var(--bg-card); padding:12px 16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+            <strong style="color:#C084FC; font-size:0.9rem;">Shadow_Monarch_99</strong>
+            <span style="font-size:0.75rem; color:var(--text-muted);">15 phút trước</span>
+          </div>
+          <p style="font-size:0.9rem; color:var(--text-color);">Đọc lại từ chương 1 trên giao diện Dark Mode này mượt thật sự! Đoạn đền thờ Cartenon đọc lần nào cũng sởn gai ốc!</p>
+        </div>
+
+        <div style="background:var(--bg-card); padding:12px 16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+            <strong style="color:#F4D068; font-size:0.9rem;">MangaFan_Tokyo</strong>
+            <span style="font-size:0.75rem; color:var(--text-muted);">1 giờ trước</span>
+          </div>
+          <p style="font-size:0.9rem; color:var(--text-color);">Website làm 100% bằng HTML & CSS không cần JS mà chuyển đổi được cả theme lẫn cỡ chữ mượt thế này, quá đỉnh cho bài tập web!</p>
+        </div>
+      </div>
+
+      <!-- Form gửi bình luận tĩnh -->
+      <form action="#gui-binh-luan" method="POST" style="margin-top:var(--space-4);">
+        <div style="margin-bottom:var(--space-3);">
+          <label for="comment-text" style="display:block; font-weight:600; margin-bottom:var(--space-2); font-size:0.9rem;">
+            Viết bình luận của bạn:
+          </label>
+          <textarea id="comment-text" 
+                    name="comment" 
+                    rows="3" 
+                    class="search-input" 
+                    style="padding:var(--space-3); resize:vertical;" 
+                    placeholder="Nhập cảm nhận của bạn về chương 1... (Biểu mẫu HTML thuần)"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" style="background:#9333EA;">Đăng bình luận</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: var(--space-3);" aria-label="Về đầu trang">
+            <span class="logo-icon" aria-hidden="true">📖</span>
+            <span class="logo-title">TRUYỆN MỘC</span>
+          </a>
+          <p class="footer-desc">
+            Không gian đọc truyện tranh Manhwa & Manga tối ưu cho mắt. 100% HTML5 & CSS3 thuần.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">Truyện Khuyên Đọc</h3>
+          <ul class="footer-links">
+            <li><a href="index.html#manhwa-section">Lookism (Diện Mạo Đích Thực)</a></li>
+            <li><a href="index.html#manga-school">Kaguya-sama: Cuộc Chiến Tỏ Tình</a></li>
+            <li><a href="index.html#manga-school">Spy x Family (Gia Đình Điệp Viên)</a></li>
+            <li><a href="index.html#manga-school">Blue Box (Hộp Xanh)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">Điều Hướng</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Trang Chủ TRUYỆN MỘC</a></li>
+            <li><a href="story.html">Mục Lục Solo Leveling</a></li>
+            <li><a href="#top">Lên Đầu Trang ↑</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 TRUYỆN MỘC — Bài tập Thiết kế Web (Vibe Coding). Mọi tác quyền thuộc về tác giả Chugong & DUBU.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top" aria-label="Cuộn lên đầu trang">
+    <span aria-hidden="true">↑</span>
+  </a>
+
+</body>
+</html>
